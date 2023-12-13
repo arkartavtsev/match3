@@ -74,24 +74,28 @@ export class Game {
         }
     }
 
-    swap(selectedTile, tile) {
+    swap(selectedTile, tile, reverse) {
         this.disabled = true;
-
-        this.clearSelection();
 
         selectedTile.sprite.zIndex = 2;
         selectedTile.moveTo(tile.field.position, 0.2);
 
+        this.clearSelection();
+
         tile.moveTo(selectedTile.field.position, 0.2).then(() => {
             this.board.swap(selectedTile, tile);
             
-            const matches = this.combinationManager.getMatches();
+            if (!reverse) {
+                const matches = this.combinationManager.getMatches();
 
-            if (matches.length) {
-                this.processMatches(matches);
+                if (matches.length) {
+                    this.processMatches(matches);
+                } else {
+                    this.swap(tile, selectedTile, true);
+                }
+            } else {
+                this.disabled = false;
             }
-
-            this.disabled = false;
         });
     }
 
