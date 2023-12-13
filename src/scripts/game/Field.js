@@ -9,12 +9,24 @@ export class Field {
       this.sprite.x = this.position.x;
       this.sprite.y = this.position.y;
       this.sprite.anchor.set(0.5);
+
+      this.selected = App.sprite("field-selected");
+      this.sprite.addChild(this.selected);
+      this.selected.visible = false;
+      this.selected.anchor.set(0.5);
   }
 
   setTile(tile) {
     this.tile = tile;
     tile.field = this;
     tile.setPosition(this.position);
+  }
+
+  unselect() {
+    this.selected.visible = false;
+  }
+  select() {
+      this.selected.visible = true;
   }
 
   get position() {
