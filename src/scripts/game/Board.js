@@ -48,6 +48,8 @@ export class Board {
         });
 
         this.container.addChild(tile.sprite);
+
+        return tile;
     }
 
     ajustPosition() {
@@ -56,16 +58,20 @@ export class Board {
         this.height = this.rows * this.fieldSize;
         this.container.x = (window.innerWidth - this.width) / 2 + this.fieldSize / 2;
         this.container.y = (window.innerHeight - this.height) / 2 + this.fieldSize / 2;
-  }
+    }
 
-  swap(tile1, tile2) {
-    const tile1Field = tile1.field;
-    const tile2Field = tile2.field;
+    swap(tile1, tile2) {
+        const tile1Field = tile1.field;
+        const tile2Field = tile2.field;
 
-    tile1Field.tile = tile2;
-    tile2.field = tile1Field;
+        tile1Field.tile = tile2;
+        tile2.field = tile1Field;
 
-    tile2Field.tile = tile1;
-    tile1.field = tile2Field;
-  }
+        tile2Field.tile = tile1;
+        tile1.field = tile2Field;
+    }
+
+    getField(row, col) {
+        return this.fields.find((field) => field.row === row && field.col === col);
+    }
 }
