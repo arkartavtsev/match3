@@ -11,6 +11,12 @@ export class Field {
       this.sprite.anchor.set(0.5);
   }
 
+  setTile(tile) {
+    this.tile = tile;
+    tile.field = this;
+    tile.setPosition(this.position);
+  }
+
   get position() {
       return {
           x: this.col * this.sprite.width,

@@ -9,5 +9,13 @@ export const Config = {
     board: {
         rows: 6,
         cols: 6
-    }
+    },
+    tilesColors: [
+        'blue',
+        'green',
+        'orange',
+        'red',
+        'pink',
+        'yellow'
+    ],
 };
