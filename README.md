@@ -1,5 +1,5 @@
-# PIXI project template
+# Match3 PixiJS game
 
-Tutorial: https://gamedev.land/pixi_project_template/
+Tutorial: [Сreating Match3 game with PixiJS](https://gamedev.land/match3/)
 
 
